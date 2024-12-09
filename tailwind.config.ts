@@ -10,6 +10,9 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+			 "customBeige": "rgb(219, 210, 201)",
+			'custom-beige': 'rgb(230, 223, 214)',
+			
 			footerTextColor:'#9F9F9F',
 			heroDivBackgroundColor:"#FFF3E3",
 			primaryColor:'#B88E2F',

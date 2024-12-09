@@ -35,7 +35,7 @@ export default function Header() {
         <div className="navbtns hidden md:flex">
           <ul className="head flex space-x-4 md:space-x-6">
             <li>
-              <Link href="/Home" className="text-gray-900">
+              <Link href="/" className="text-gray-900">
                 Home
               </Link>
             </li>
