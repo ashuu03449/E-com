@@ -1,4 +1,4 @@
-[live demo](https://e-com-mu-cyan.vercel.app/)
+[Live demo 😉](https://e-commerce-hackhaton.vercel.app/)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
