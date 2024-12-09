@@ -1,4 +1,5 @@
 import { useCart } from "@/components/CartContext";
+import Image from "next/image";
 
 interface Product {
   id: string;
@@ -20,9 +21,11 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
-      <img
+      <Image
         src={product.productImageUrl}
         alt={product.productName}
+        width={100}
+        height={120}
         className="w-full h-40 object-cover rounded-lg mb-4"
       />
       <h3 className="text-lg font-semibold">{product.productName}</h3>

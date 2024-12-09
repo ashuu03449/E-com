@@ -9,8 +9,15 @@ const poppins = Poppins({
     subsets: ['latin'],
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
+interface SubHero {
+  mainhead:string,
+  homename:string,
+  currentPage:string,
+}
 
-const AnotherHeroSection = (props:any) => {
+const AnotherHeroSection = (props:SubHero) => {
+  console.log(props);
+  
   return (
     <div className={`${poppins.className} w-full h-[316px] relative flex flex-col items-center justify-center`}>
       <Image src={'/assets/backgroundimage1.png'} alt="backgroundimage" fill className="object-cover" />

@@ -2,7 +2,7 @@ import Form from './ContactForm';
 
 const ContactSection = () => {
   return (
-    <div className="container mx-auto p-6 shadow-lg rounded-lg">
+    <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left side - Address, Phone, Working Time */}
         <div className="flex-1 space-y-6">
@@ -32,7 +32,7 @@ const ContactSection = () => {
         </div>
 
         {/* Right side - Form */}
-        <div className="flex-1 flex justify-center items-start  p-6 rounded-lg shadow-md">
+        <div className="flex-1 flex justify-center items-start bg-yellow-50 p-6 rounded-lg shadow-md">
           <Form />
         </div>
       </div>

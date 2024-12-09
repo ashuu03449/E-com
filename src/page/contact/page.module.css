@@ -1,0 +1,49 @@
+/* components/ContactSection.module.css */
+.contactSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    gap: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .textContent {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .textContent h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .textContent p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .imageContent {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .imageContent img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .contactSection {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .textContent,
+    .imageContent {
+      max-width: 100%;
+    }
+  }
+  

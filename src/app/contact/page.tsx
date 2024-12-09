@@ -1,6 +1,5 @@
 import AnotherHeroSection from '@/components/AnotherHeroSection'
-import ContactForm from '@/components/ContactForm'
-import ContactSection from '@/components/contactSection'
+import ContactSection from '@/components/ContactSection'
 import FeatureSection from '@/components/Frameonesix'
 import React from 'react'
 
