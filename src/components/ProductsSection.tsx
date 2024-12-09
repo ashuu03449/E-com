@@ -1,57 +1,112 @@
-// components/ProductCard.tsx
-import Image from "next/image";
+import ProductCard from './ProductCard'; // Importing the ProductCard component to display individual product cards
+import Button from './Button'; // Importing a Button component (assumed to be a reusable button element)
+import HeadingCenter from './HeadingCenter';
 
-// Define Product Interface (for individual product)
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-}
+// Array holding the product details. Each object represents one product with details such as:
+// url: the image path of the product
+// popUp: label to show discounts or special tags (e.g., "New")
+// title: name of the product
+// description: brief description of the product
+// discountPrice: discounted price of the product
+// actualPrice: original price of the product (may be empty if no original price exists)
+// forceHover: a custom property (optional) to force the hover effect on a specific card
+const productArray = [{
+    url: '/assets/Syltherine.png',
+    popUp: '-30%',
+    title: 'Syltherine',
+    description: 'Stylish cafe chair',
+    discountPrice: 'Rp 2.500.000',
+    actualPrice: 'Rp 3.500.000'
+},
+{
+    url: '/assets/leviosa.png',
+    popUp: '',
+    title: 'Leviosa',
+    description: 'Stylish cafe chair',
+    discountPrice: 'Rp 2.500.000',
+    actualPrice: '',
+    forceHover: true // This card will have the hover effect always enabled
+},
+{
+    url: '/assets/Lolito.png',
+    popUp: '-50%',
+    title: 'Lolito',
+    description: 'Luxury big sofa',
+    discountPrice: 'Rp 7.000.000',
+    actualPrice: 'Rp 14.000.000'
+},
+{
+    url: '/assets/Respira.png',
+    popUp: 'New',
+    title: 'Respira',
+    description: 'Outdoor bar table and stool',
+    discountPrice: 'Rp 500.000',
+    actualPrice: ''
+},
+{
+    url: '/assets/Grifo.png',
+    popUp: '',
+    title: 'Grifo',
+    description: 'Night lamp',
+    discountPrice: 'Rp 1.500.000',
+    actualPrice: ''
+},
+{
+    url: '/assets/Muggo.png',
+    popUp: 'New',
+    title: 'Muggo',
+    description: 'Small mug',
+    discountPrice: 'Rp 150.000',
+    actualPrice: ''
+},
+{
+    url: '/assets/Pingky.png',
+    popUp: '-50%',
+    title: 'Pingky',
+    description: 'Cute bed set',
+    discountPrice: 'Rp 7.000.000',
+    actualPrice: 'Rp 14.000.000'
+},
+{
+    url: '/assets/Potty.png',
+    popUp: 'New',
+    title: 'Potty',
+    description: 'Minimalist flower pot',
+    discountPrice: 'Rp 500.000',
+    actualPrice: ''
+},
+]
 
-// Define the type for the props being passed to the ProductCard component
-interface ProductCardProps {
-  url: string;
-  label: string;
-  title: string;
-  description: string;
-  discount: string;
-  actual: string;
-  forceHover: boolean;
-}
-
-const ProductCard = ({ url, label, title, description, discount, actual, forceHover }: ProductCardProps) => {
-  return (
-    <div className={`group relative bg-white rounded-lg shadow-md overflow-hidden ${forceHover ? 'hover:scale-105' : ''}`}>
-      {/* Image Section */}
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <Image
-          src={url}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          className="transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-
-      {/* Product Details */}
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-        <p className="text-sm text-gray-600">{description}</p>
-        <div className="flex items-center justify-between mt-4">
-          <span className="text-xl font-bold text-gray-900">{discount ? `Discount: ${discount}` : actual}</span>
-          <button className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition duration-300">
-            Add to Cart
-          </button>
+// The Products component serves as a container for the product listing.
+const Products = () => {
+    return (
+        <div className='px-[30px] md:px-[60px] pb-[48px]'>
+            {/* Title for the product section */}
+            <HeadingCenter title="Our Products" />
+            
+            {/* Container for product cards */}
+            <div className='mt-10 flex flex-wrap items-center justify-center gap-7'>
+                {
+                    // Mapping over the productArray to render a ProductCard for each product.
+                    // The ProductCard receives props from the object for rendering individual card details.
+                    productArray.map((product, index) => (
+                        <ProductCard
+                            key={index} // Using index as the key since each product is unique in this case
+                            url={product.url} // Product image URL
+                            label={product.popUp} // Discount or label badge
+                            title={product.title} // Product title
+                            description={product.description} // Product description
+                            discount={product.discountPrice} // Discounted price
+                            actual={product.actualPrice} // Original price
+                            forceHover={product.forceHover || false} // Force hover behavior, default to false if undefined
+                        />
+                    ))
+                }
+            </div>
+            
+            {/* A Button component, possibly for "Load More" or other actions */}
+            <Button />
         </div>
-      </div>
-
-      {/* Hover Effect */}
-      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-    </div>
-  );
-};
-
-export default ProductCard;
+    )
+}
+export default Products
