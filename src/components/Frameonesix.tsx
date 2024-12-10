@@ -9,7 +9,7 @@ const FeatureSection = () => {
       <div className="flex flex-col items-center text-center px-2 py-6">
         <div className="w-20 h-20 relative mb-4">
           <Image
-            src="/assets/group.png"
+            src="/assets/Group.png"
             alt="Group"
             layout="fill"
             objectFit="contain"
