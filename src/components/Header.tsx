@@ -8,9 +8,14 @@ import { CiSearch } from "react-icons/ci";
 import { GoHeart } from "react-icons/go";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoClose } from "react-icons/io5"; // Close Icon
+import { useCart } from "@/components/CartContext"; // Import useCart
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Track menu state
+  const { cartItems } = useCart(); // Use cart context to get cart items
+
+  // Calculate total number of items in the cart
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   // Toggle menu visibility
   const toggleMenu = () => {
@@ -21,12 +26,12 @@ export default function Header() {
     <>
       <div className="navbar max-w-7xl mx-auto px-4 py-4 bg-white flex justify-between items-center">
         {/* Logo */}
-        <div className="logo ">
+        <div className="logo">
           <Image
             src={Logo}
             width={185}
             height={41}
-            alt="Picture of the author"
+            alt="Logo"
             className="h-[25px] w-[100px] md:w-[150px] md:h-[40px]"
           />
         </div>
@@ -58,11 +63,21 @@ export default function Header() {
         </div>
 
         {/* Navbar Icons */}
-        <div className="icons flex space-x-2 sm:space-x-6 md:space-x-6 hidden  md:flex">
+        <div className="icons flex space-x-2 sm:space-x-6 md:space-x-6 hidden md:flex">
           <MdPersonOutline size={20} className="sm:text-xl md:text-2xl text-gray-900" />
           <CiSearch size={20} className="sm:text-xl md:text-2xl text-gray-900" />
           <GoHeart size={20} className="sm:text-xl md:text-2xl text-gray-900" />
-          <AiOutlineShoppingCart size={20} className="sm:text-xl md:text-2xl text-gray-900" />
+          <Link href="/cart">
+            <div className="relative">
+              <AiOutlineShoppingCart size={20} className="sm:text-xl md:text-2xl text-gray-900" />
+              {/* Cart Item Count Badge */}
+              <span
+                className={`absolute -top-2 bottom-6 -right-2 flex items-center justify-center w-5 h-4 text-xs font-semibold text-white bg-red-500 rounded-full`}
+              >
+                {cartItemCount > 0 ? cartItemCount : 0} {/* Show count or 0 */}
+              </span>
+            </div>
+          </Link>
         </div>
 
         {/* Hamburger Icon for Mobile */}
@@ -129,7 +144,17 @@ export default function Header() {
           <MdPersonOutline size={24} className="text-gray-900" />
           <CiSearch size={24} className="text-gray-900" />
           <GoHeart size={24} className="text-gray-900" />
-          <AiOutlineShoppingCart size={24} className="text-gray-900" />
+          <Link href="/cart">
+            <div className="relative">
+              <AiOutlineShoppingCart size={20} className="sm:text-xl md:text-2xl text-gray-900" />
+              {/* Cart Item Count Badge */}
+              <span
+                className={`absolute -top-2 bottom-6 -right-2 flex items-center justify-center w-5 h-4 text-xs font-semibold text-white bg-red-500 rounded-full`}
+              >
+                {cartItemCount > 0 ? cartItemCount : 0} {/* Show count or 0 */}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </>

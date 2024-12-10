@@ -71,6 +71,20 @@ const Inspiration = () => {
                         <CarouselItem className="flex items-center justify-center h-full">
                             <Image src={'/assets/crouselimage2.png'} alt='image 2' width={372} height={486} className="object-contain" />
                         </CarouselItem>
+                        <CarouselItem className="flex items-center justify-center h-full">
+                            <Image src={'/assets/fifthimage.png'} alt='image 1' width={372} height={486} className="object-contain" />
+                        </CarouselItem>
+                        {/* Second image in the carousel */}
+                        <CarouselItem className="flex items-center justify-center h-full">
+                            <Image src={'/assets/eightimage.png'} alt='image 2' width={372} height={486} className="object-contain" />
+                        </CarouselItem>
+                        <CarouselItem className="flex items-center justify-center h-full">
+                            <Image src={'/assets/fourthimage.png'} alt='image 1' width={372} height={486} className="object-contain" />
+                        </CarouselItem>
+                        {/* Second image in the carousel */}
+                        <CarouselItem className="flex items-center justify-center h-full">
+                            <Image src={'/assets/firstimage.png'} alt='image 2' width={372} height={486} className="object-contain" />
+                        </CarouselItem>
                     </CarouselContent>
 
                     {/* Carousel navigation buttons */}

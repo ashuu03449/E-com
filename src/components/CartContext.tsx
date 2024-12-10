@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+"use client";
+// components/CartContext.tsx
+import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
-// Define the Product interface
 interface ProductList {
   id: string;
   productImageUrl: string;
@@ -13,12 +14,11 @@ interface CartContextType {
   cartItems: ProductList[];
   addToCart: (product: ProductList) => void;
   removeFromCart: (id: string) => void;
-  updateCart: (updatedCart: ProductList[]) => void;
   increaseItemCount: (id: string) => void;
   decreaseItemCount: (id: string) => void;
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const useCart = () => {
   const context = useContext(CartContext);
@@ -47,9 +47,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const existingProduct = cartItems.find((item) => item.id === product.id);
     if (existingProduct) {
       const updatedCart = cartItems.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
       );
       updateCart(updatedCart);
     } else {
@@ -66,17 +64,17 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
-    updateCart(updatedCart);
+    updateCart(updatedCart); // Update cart in the context
   };
-
+  
   const decreaseItemCount = (id: string) => {
     const updatedCart = cartItems.map((item) =>
       item.id === id && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
+        ? { ...item, quantity: item.quantity - 1 } : item
     );
-    updateCart(updatedCart);
+    updateCart(updatedCart); // Update cart in the context
   };
+  
 
   return (
     <CartContext.Provider
@@ -84,7 +82,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         cartItems,
         addToCart,
         removeFromCart,
-        updateCart,
         increaseItemCount,
         decreaseItemCount,
       }}

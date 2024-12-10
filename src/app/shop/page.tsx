@@ -7,7 +7,7 @@ import Products from "@/components/ProductsSection"
 const Shop = () => {
   return (
     <div>
-      <AnotherHeroSection mainhead={"Shop"} homename="Home" currentPage={"Shop"} />
+      <AnotherHeroSection mainhead="Shop" homename="Home" currentPage="Shop" />
       <FilterControls />
       <Products />
       <FeatureSection />
