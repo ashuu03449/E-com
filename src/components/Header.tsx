@@ -118,7 +118,7 @@ export default function Header() {
         {/* Mobile Menu Links */}
         <ul className="flex flex-col items-center space-y-6 p-6">
           <li>
-            <Link href="/Home" className="text-gray-900">
+            <Link href="/" className="text-gray-900">
               Home
             </Link>
           </li>
